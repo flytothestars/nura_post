@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: PT Root UI;
+    font-style: normal;
+}
+
+.separator {
+    border-top: 1px solid #ccc; /* Серая горизонтальная линия */
+    width: 100%; /* Растягиваем по всей ширине контейнера */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.box {
+    display: flex;
+}
+
+.icon-wrap {
+    width: 40px;
+}
+
+.content-footer-info{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.content-social {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 100px;
+    padding: 4px 12px 4px 4px;
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1c1b1f;
+}
+
+.icon-social {
+    width: 35px;
+    height: 35px;
+    margin-right: 6px;
+}
+
+.tiny-grey{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #526070;
+}
+
+.address-links{
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.address-link{
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 100px;
+    padding: 4px 12px 4px 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1c1b1f;
+}
+
+.icon{
+    border: 1px solid #526070;
+    border-radius: 24px;
+    width: 34px;
+    height: 34px;
+    margin-right: 8px;
+}
+
+.place-at-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #526070;
+}
+
+.contact-phone {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1c1b1f;
+}
+
+.set-language {
+    background: #f1f2f4;
+    border: .5px solid #e8e8e8;
+    padding: 6px 10px 6px 8px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1c1b1f;
+}
