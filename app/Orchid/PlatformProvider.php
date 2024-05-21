@@ -36,8 +36,25 @@ class PlatformProvider extends OrchidServiceProvider
         return [
 
             Menu::make('Dashboard')
-                ->icon('')
+                ->icon('bs.graph-up')
                 ->title('Главная')
+                ->route(config('platform.index')),
+            
+            Menu::make('Филиалы')
+                ->icon('bs.geo-alt')
+                ->route('platform.filials'),
+
+            Menu::make('Новости')
+                ->icon('bs.book')
+                ->route(config('platform.index')),
+
+            Menu::make('Загрузить трек-код')
+                ->icon('bs.box-seam')
+                ->route(config('platform.index')),
+
+            
+            Menu::make('Настройка')
+                ->icon('bs.gear')
                 ->route(config('platform.index')),
 
             Menu::make('Get Started')
@@ -84,17 +101,6 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
-            Menu::make('Documentation')
-                ->title('Docs')
-                ->icon('bs.box-arrow-up-right')
-                ->url('https://orchid.software/en/docs')
-                ->target('_blank'),
-
-            Menu::make('Changelog')
-                ->icon('bs.box-arrow-up-right')
-                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-                ->target('_blank')
-                ->badge(fn () => Dashboard::version(), Color::DARK),
         ];
     }
 

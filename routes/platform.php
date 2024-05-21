@@ -31,6 +31,10 @@ use Tabuna\Breadcrumbs\Trail;
 |
 */
 
+Route::screen('/filials', \App\Orchid\Screens\Filial\FilialListScreen::class)
+    ->name('platform.filials');
+
+
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
