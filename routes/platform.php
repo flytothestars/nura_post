@@ -32,12 +32,19 @@ use Tabuna\Breadcrumbs\Trail;
 */
 
 Route::screen('/filials', \App\Orchid\Screens\Filial\FilialListScreen::class)
-    ->name('platform.filials');
+->name('platform.filials');
+
+Route::screen('/settings/form/basic', \App\Orchid\Screens\Setting\SettingFieldScreen::class)->name('platform.settings.basic');
+Route::screen('/settings/form/advanced', \App\Orchid\Screens\Setting\SettingsFieldsAdvancedScreen::class)->name('platform.settings.advanced');
 
 
+Route::screen('/examples/form/fields', ExampleFieldsScreen::class)->name('platform.example.fields');
+Route::screen('/examples/form/advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
+Route::screen('/examples/form/editors', ExampleTextEditorsScreen::class)->name('platform.example.editors');
+Route::screen('/examples/form/actions', ExampleActionsScreen::class)->name('platform.example.actions');
 // Main
 Route::screen('/main', PlatformScreen::class)
-    ->name('platform.main');
+->name('platform.main');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
@@ -94,11 +101,6 @@ Route::screen('example', ExampleScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push('Example Screen'));
-
-Route::screen('/examples/form/fields', ExampleFieldsScreen::class)->name('platform.example.fields');
-Route::screen('/examples/form/advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
-Route::screen('/examples/form/editors', ExampleTextEditorsScreen::class)->name('platform.example.editors');
-Route::screen('/examples/form/actions', ExampleActionsScreen::class)->name('platform.example.actions');
 
 Route::screen('/examples/layouts', ExampleLayoutsScreen::class)->name('platform.example.layouts');
 Route::screen('/examples/grid', ExampleGridScreen::class)->name('platform.example.grid');
