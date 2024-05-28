@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->string('phone');
             $table->string('twogis_link')->nullable();
-            $table->string('work_time')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
             $table->string('exchange_rates')->nullable();
             $table->timestamps();
         });

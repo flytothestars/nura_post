@@ -11,7 +11,7 @@ class Filial extends Model
 {
     use HasFactory, AsSource;
 
-    protected $fillable = ['address','phone','twogis_link','work_time','exchange_rates', 'city_id'];
+    protected $fillable = ['address','phone','twogis_link','start_time', 'end_time','exchange_rates', 'city_id'];
 
     public function city(): BelongsTo
     {

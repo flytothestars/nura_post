@@ -63,13 +63,13 @@
                                             </div>
                                         </div>
                                         @endif
-                                        @if($filial->work_time)
+                                        @if($filial->start_time)
                                         <div class="box worktime-box">
                                             <div class="left-image"><img src="{{asset('images/watch.svg')}}"
                                                     alt="watch"></div>
                                             <div class="worktime">
-                                                <p>{{$filial->work_time}}</p>
-                                                <p>Демалыссыз</p>
+                                                <p>{{$filial->start_time}} - {{$filial->end_time}}</p>
+                                                <p></p>
                                             </div>
                                         </div>
                                         @endif
@@ -95,7 +95,7 @@
                                             <div class="branch-address">
                                                 <div class="address-item">
                                                     <div class="location">{{$filial->address}}</div>
-                                                    <div class="city">Сарыарқа ауданы</div>
+                                                    <div class="city"></div>
                                                     <div class="links">
                                                         <a href="{{$filial->twogis_link}}" class="link">
                                                             <img src="{{asset('images/twogis.svg')}}" alt="2gis">

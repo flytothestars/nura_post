@@ -38,7 +38,9 @@ class FilialListTable extends Table
             TD::make('address', 'Адрес'),
             TD::make('phone', 'Телефон'),
             TD::make('twogis_link', 'Ссылка 2gis'),
-            TD::make('work_time', 'Время работы'),
+            TD::make('work_time', 'Время работы')->render(function ($field) {
+                return "{$field->start_time} - {$field->end_time}";
+            }),
             TD::make('exchange_rates', 'Цена за кг'),
             TD::make('action', 'Действие')->render(function (Filial $filial) {
                 return Group::make([
@@ -46,7 +48,7 @@ class FilialListTable extends Table
                         ->icon('bs.pencil')
                         ->modal('editFilial')
                         ->method('update')
-                        ->modalTitle('Редактирование филиал ' . $filial->id)
+                        ->modalTitle('Редактирование филиал ' . $filial->address)
                         ->asyncParameters([
                             'filial' => $filial->id
                         ])
@@ -54,10 +56,10 @@ class FilialListTable extends Table
                         ->style($this->styleButton),
                     Button::make('')
                         ->icon('trash')
-                        ->method('remove')
+                        ->method('delete')
                         ->confirm('Вы уверены, что хотите удалить филиал?')
                         ->parameters([
-                            'id' => $filial->id,
+                            'filial' => $filial->id,
                         ])
                         ->class('btn btn-danger text-center rounded-2')
                         ->style($this->styleButton),
