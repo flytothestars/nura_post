@@ -8,13 +8,13 @@
             <div class="input-block">
                 <label for="observation" class="label">Отслеживайте свой
                     товар</label>
-                <input placeholder="Введите трек-код" class="input" type="text" id="observation">
+                <input placeholder="Введите трек-код" class="input" type="text" name="observation">
             </div>
-            <button class="observation-btn">Следить</button>
+            <button id="send" class="observation-btn btn btn-warning">Следить</button>
         </div>
     </div>
 </div>
-<!-- <div class="mt80">
+<!-- <div class="mt80">xx
         <div class="rates-block"><span class="text">У нас
                 лучшие тарифы.</span>
             <div class="rates-calculator">
@@ -42,80 +42,80 @@
         <span class="branches-title">Наши филиалы</span>
         <div class="branch-page">
             <div class="container-slider">
-                @if(count($filials) <= 3)
-                <div class="itc-slider" data-slider="itc-slider" data-loop="false" data-autoplay="false">
-                @else
-                <div class="itc-slider" data-slider="itc-slider" data-loop="true" data-autoplay="true" data-interval="5000">
-                @endif    
-                    <div class="itc-slider-wrapper">
-                        <div class="itc-slider-items">
-                            @foreach($filials as $filial)
-                            <div class="itc-slider-item">
-                                <div class="tab-item">
-                                    <div class="tab-content">
-                                        <div class="city-name">{{$filial->city->name}}</div>
-                                        @if($filial->phone)
-                                        <div class="box phone-box">
-                                            <div class="left-image"><img src="{{asset('images/phone.svg')}}"
-                                                    alt="phone"></div>
-                                            <div class="phones">
-                                                <div class="phone">{{$filial->phone}}</div>
-                                            </div>
-                                        </div>
-                                        @endif
-                                        @if($filial->start_time)
-                                        <div class="box worktime-box">
-                                            <div class="left-image"><img src="{{asset('images/watch.svg')}}"
-                                                    alt="watch"></div>
-                                            <div class="worktime">
-                                                <p>{{$filial->start_time}} - {{$filial->end_time}}</p>
-                                                <p></p>
-                                            </div>
-                                        </div>
-                                        @endif
-                                        @if($filial->exchange_rates)
-                                        <div class="box price-box">
-                                            <div class="left-image">
-                                                <img src="{{asset('images/money.svg')}}"
-                                                    alt="money">
-                                            </div>
-                                            <div class="price-for-country">
-                                                <div class="price">
-                                                    <p>Из Китая до филиалов</p>
-                                                    <p>- {{$filial->exchange_rates}}$ / 1кг</p><!---->
+                @if(count($filials) <= 3) <div class="itc-slider" data-slider="itc-slider" data-loop="false"
+                    data-autoplay="false">
+                    @else
+                    <div class="itc-slider" data-slider="itc-slider" data-loop="true" data-autoplay="true"
+                        data-interval="5000">
+                        @endif
+                        <div class="itc-slider-wrapper">
+                            <div class="itc-slider-items">
+                                @foreach($filials as $filial)
+                                <div class="itc-slider-item">
+                                    <div class="tab-item">
+                                        <div class="tab-content">
+                                            <div class="city-name">{{$filial->city->name}}</div>
+                                            @if($filial->phone)
+                                            <div class="box phone-box">
+                                                <div class="left-image"><img src="{{asset('images/phone.svg')}}"
+                                                        alt="phone"></div>
+                                                <div class="phones">
+                                                    <div class="phone">{{$filial->phone}}</div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        @endif
-                                        @if($filial->twogis_link)
-                                        <div class="box address-box">
-                                            <div class="left-image">
-                                                <img src="{{asset('images/location_on.svg')}}" alt="location">
+                                            @endif
+                                            @if($filial->start_time)
+                                            <div class="box worktime-box">
+                                                <div class="left-image"><img src="{{asset('images/watch.svg')}}"
+                                                        alt="watch"></div>
+                                                <div class="worktime">
+                                                    <p>{{$filial->start_time}} - {{$filial->end_time}}</p>
+                                                    <p></p>
+                                                </div>
                                             </div>
-                                            <div class="branch-address">
-                                                <div class="address-item">
-                                                    <div class="location">{{$filial->address}}</div>
-                                                    <div class="city"></div>
-                                                    <div class="links">
-                                                        <a href="{{$filial->twogis_link}}" class="link">
-                                                            <img src="{{asset('images/twogis.svg')}}" alt="2gis">
-                                                            <span class="text-map">2gis</span></a>
-                                                        <a class="link">
-                                                        </a>
+                                            @endif
+                                            @if($filial->exchange_rates)
+                                            <div class="box price-box">
+                                                <div class="left-image">
+                                                    <img src="{{asset('images/money.svg')}}" alt="money">
+                                                </div>
+                                                <div class="price-for-country">
+                                                    <div class="price">
+                                                        <p>Из Китая до филиалов</p>
+                                                        <p>- {{$filial->exchange_rates}}$ / 1кг</p><!---->
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
+                                            @if($filial->twogis_link)
+                                            <div class="box address-box">
+                                                <div class="left-image">
+                                                    <img src="{{asset('images/location_on.svg')}}" alt="location">
+                                                </div>
+                                                <div class="branch-address">
+                                                    <div class="address-item">
+                                                        <div class="location">{{$filial->address}}</div>
+                                                        <div class="city"></div>
+                                                        <div class="links">
+                                                            <a href="{{$filial->twogis_link}}" class="link">
+                                                                <img src="{{asset('images/twogis.svg')}}" alt="2gis">
+                                                                <span class="text-map">2gis</span></a>
+                                                            <a class="link">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endif
                                         </div>
-                                        @endif
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
+                        <button class="itc-slider-btn itc-slider-btn-prev"></button>
+                        <button class="itc-slider-btn itc-slider-btn-next"></button>
                     </div>
-                    <button class="itc-slider-btn itc-slider-btn-prev"></button>
-                    <button class="itc-slider-btn itc-slider-btn-next"></button>
-                </div>
             </div>
 
 
@@ -148,5 +148,27 @@
             </div>
         </div>
     </div> -->
+
+
+<!-- Модальное окно для отображения статуса -->
+<div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="statusModalLabel">Статус трек-кода</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center" id="statusModalBody">
+
+                </div>
+                <!-- Сюда будет вставлен статус после получения ответа от сервера -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

@@ -100,7 +100,7 @@ class TrackCodeListScreen extends Screen
         $file = $request->file('raw_file');
         try {
             Excel::import(new TrackCodeImport($status), $file); // TrackCodeImport - класс импорта Excel
-
+            Toast::info('Данные успешно импортированы');
             return back()->with('success', 'Данные успешно импортированы.');
         } catch (\Exception $e) {
             return back()->with('error', 'Ошибка импорта данных: ' . $e->getMessage());

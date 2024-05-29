@@ -12,4 +12,9 @@ class StatusTrackCode extends Model
 
     protected $fillable = ['name', 'background_color', 'text_color'];
 
+    public function trackCodes()
+    {
+        return $this->hasMany(TrackCode::class, 'status_track_code_id');
+    }
+
 }
