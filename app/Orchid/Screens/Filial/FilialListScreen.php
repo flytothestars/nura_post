@@ -29,7 +29,6 @@ class FilialListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'filial' => Filial::find(6),
             'filials' => Filial::all()
         ];
     }

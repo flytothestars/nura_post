@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('filials', function (Blueprint $table) {
             $table->id();
             $table->string('address');
-            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            $table->foreignId('city_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('phone');
             $table->string('twogis_link')->nullable();
             $table->string('start_time')->nullable();

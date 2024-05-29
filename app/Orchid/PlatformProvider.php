@@ -50,7 +50,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('Загрузить трек-код')
                 ->icon('bs.box-seam')
-                ->route(config('platform.index')),
+                ->route('platform.trackcode'),
 
             
             Menu::make('Настройка')
