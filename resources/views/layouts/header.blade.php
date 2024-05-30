@@ -40,20 +40,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="place-at-center nav-link">
-                            <div class="dropdown">
-                                <button class="btn set-language dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Выбор языка
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">RU</a></li>
-                                    <li><a class="dropdown-item" href="#">KZ</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
