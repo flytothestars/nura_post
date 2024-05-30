@@ -14,27 +14,32 @@
         </div>
     </div>
 </div>
-<!-- <div class="mt80">xx
-        <div class="rates-block"><span class="text">У нас
-                лучшие тарифы.</span>
-            <div class="rates-calculator">
-                <div class="rates-price"><span class="text">Цена за
-                        доставку&nbsp;</span><span class="text-price"><span>$</span> 4.20 </span>
+<div class="mtop">
+    <div class="rates-block"><span class="block-title">У нас
+            лучшие тарифы.</span>
+        <div class="rates-calculator">
+            <div class="rates-price">
+                <span class="text-title">Цена за доставку&nbsp;</span>
+                <span class="text-price"><span>$</span><span id="range-result">0</span></span>
+            </div>
+            <div class="rates-wrapper">
+                <div class="rates-range">
+                    <label class="label" for="product-weight">Вес продукта</label>
+                    <div class="range-container">
+                        <span class="range-value" id="range-display">0</span>
+                        <input type="range" min="0" step="0.1" max="100" value="0" class="product-inputRange" id="range-slider">
+                    </div>
                 </div>
-                <div class="rates-wrapper">
-                    <div class="rates-range"><label class="label" for="product-weight">Вес продукта</label><input
-                            class="product-ratesInput" disabled="" type="text" id="product-weight"><input type="range"
-                            min="0" step="0.1" max="32" class="product-inputRange"></div>
-                    <div class="rates-type">
-                        <div class="rates-info active"><span class="text">1кг
-                                = $4.2</span><img class="icon-img" src="/img/plane.905a43fa.svg" alt="plane"
-                                style="display: none;"><img class="icon-img" src="/img/truck.4b9223f9.svg" alt="truck">
-                        </div>
+                <div class="rates-type">
+                    <div class="rates-info active">
+                        <span class="text-info-kg">1кг = ${{$settingData['per_kg']}}</span>
+                        <img class="icon-img" src="{{asset('images/truck.svg')}}" alt="truck">
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+</div>
 
 @if(count($filials) != 0)
 <div class="mtop">
