@@ -12,6 +12,13 @@
     box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: rgba(0, 0, 0, .85);
+    font-weight: 500;
+    margin-bottom: .5em;
+    margin-top: 0;
+}
+
 .mtop {
     margin-top: 80px;
 }
@@ -441,3 +448,30 @@ p {
     font-weight: 500;
 }
 
+/* ============================ */
+
+.first {
+    justify-self: center;
+    text-align: center;
+}
+
+.info {
+    margin: auto;
+}
+
+.partner-button {
+    padding: 15px;
+    border-radius: 15px;
+    height: 60px;
+    width: 250px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.ant-btn-primary {
+    background: rgb(27, 137, 24);
+    border-color: rgb(27, 137, 24);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .045);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+}

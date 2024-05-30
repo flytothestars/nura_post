@@ -21,7 +21,7 @@
                                 </span>
                             </span>
                             <div>
-                                <a href="#" style="color: black; text-decoration: none;">Откройте свой филиал</a>
+                                <a href="{{route('partner')}}" style="color: black; text-decoration: none;">Откройте свой филиал</a>
                             </div>
                         </div>
                     </li>

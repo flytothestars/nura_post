@@ -7,8 +7,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-        // $('#smsCheck').hide();
-
         $('#send').click(function (e) {
             var code = $("input[name=observation]").val();
             console.log(code)
@@ -30,19 +28,46 @@
     })
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-       const rangeSlider = document.getElementById('range-slider');
-       const rangeResult = document.getElementById('range-result');
-       const rangeDisplay = document.getElementById('range-display');
+    $(document).ready(function () {
+        $('#sendPartner').click(function (e) {
+            var name = $("input[name=name]").val();
+            var phone = $("input[name=phone]").val();
+            var birthday = $("input[name=birthday]").val();
+            var _token = $("input[name=_token]").val();
+            console.log(name)
+            $.post('/set/partner',
+                { '_token': _token, 'name': name, 'phone': phone, 'birthday': birthday }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(function (response) {
+                    console.log(response)
+                    $('#formPartner').modal('hide'); // Закрыть модальное окно
+                    $('#statusModalBody').text('Успешно отправлено'); // Вставить сообщение об успешной отправке в другое модальное окно
+                    $('#statusModal').modal('show');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        });
+    })
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const rangeSlider = document.getElementById('range-slider');
+        const rangeResult = document.getElementById('range-result');
+        const rangeDisplay = document.getElementById('range-display');
 
-       if (rangeResult) {
-           rangeSlider.addEventListener('input', function() {
-               console.log(rangeSlider.value)
-               rangeDisplay.textContent = rangeSlider.value; 
-               rangeResult.textContent = rangeSlider.value * {{$settingData['per_kg']}};
-           });
+        if (rangeResult) {
+            rangeSlider.addEventListener('input', function () {
+                console.log(rangeSlider.value)
+                rangeDisplay.textContent = rangeSlider.value;
+                rangeResult.textContent = rangeSlider.value * {{ $settingData['per_kg'] }
+            };
+        });
        } else {
-           console.error('Element with id "range-result" not found.');
-       }
+        console.error('Element with id "range-result" not found.');
+    }
    });
 </script>

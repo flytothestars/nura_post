@@ -44,9 +44,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.geo-alt')
                 ->route('platform.filials'),
 
-            Menu::make('Новости')
+            Menu::make('Партнеры')
                 ->icon('bs.book')
-                ->route(config('platform.index')),
+                ->route('platform.partners'),
 
             Menu::make('Загрузить трек-код')
                 ->icon('bs.box-seam')

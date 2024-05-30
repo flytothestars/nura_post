@@ -34,6 +34,9 @@ use Tabuna\Breadcrumbs\Trail;
 Route::screen('/filials', \App\Orchid\Screens\Filial\FilialListScreen::class)
 ->name('platform.filials');
 
+Route::screen('/partners', \App\Orchid\Screens\Partner\PartnerListScreen::class)
+->name('platform.partners');
+
 Route::screen('/trackcode', \App\Orchid\Screens\TrackCode\TrackCodeListScreen::class)
 ->name('platform.trackcode');
 

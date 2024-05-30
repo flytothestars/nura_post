@@ -7,13 +7,41 @@ use Illuminate\Http\Request;
 use App\Models\Filial;
 use App\Models\TrackCode;
 use Illuminate\Support\Facades\File;
+use App\Models\Partner;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $filials = Filial::all();
-        
+        $settingData = $this->getSettingData();
+        return view('web.home', ['filials' => $filials, 'settingData' => $settingData]);
+    }
+
+    public function checkTrackCode(Request $request)
+    {
+        $track = TrackCode::where('code', $request->code)->first();
+        return response()->json([
+            'status' => $track->status->name
+        ]);
+    }
+
+    public function partner()
+    {
+        $settingData = $this->getSettingData();
+        return view('web.partner', ['settingData' => $settingData]);
+    }
+
+    public function setPartner(Request $request)
+    {
+        Partner::create([
+            'name' => $request->name,
+            'phone' => $request->phone
+        ]);
+    }
+
+    public function getSettingData()
+    {
         $filePath = config_path('config_file.json');
         $settingData = [];
         if (File::exists($filePath)) {
@@ -42,15 +70,6 @@ class HomeController extends Controller
             $settingData['iinbin'] = '';
             $settingData['name_company'] = '';
         }
-
-        return view('web.home', ['filials' => $filials, 'settingData' => $settingData]);
-    }
-
-    public function checkTrackCode(Request $request)
-    {
-        $track = TrackCode::where('code', $request->code)->first();
-        return response()->json([
-            'status' => $track->status->name
-        ]);
+        return $settingData;
     }
 }
