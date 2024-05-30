@@ -35,7 +35,7 @@
                                     Контакт
                                 </div>
                                 <div class="row contact-phone">
-                                    8-747-583-07-26
+                                    {{$settingData['phone']}}
                                 </div>
                             </div>
                         </div>

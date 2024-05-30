@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Setting;
 
 use App\Orchid\Layouts\Settings\SettingsElements;
+use Illuminate\Http\Request;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\CheckBox;
@@ -17,9 +18,15 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
+use Illuminate\Support\Facades\File;
 
 class SettingFieldScreen extends Screen
 {
+
+    protected $fieldsEnabled = false;
+    protected $input;
+
     /**
      * Fetch data to be displayed on the screen.
      *
@@ -57,229 +64,161 @@ class SettingFieldScreen extends Screen
      */
     public function layout(): iterable
     {
+        $filePath = config_path('config_file.json');
+        if (File::exists($filePath)) {
+            $jsonData = json_decode(File::get($filePath), true);
+            $address = isset($jsonData['address']) ? $jsonData['address'] : '';
+            $email = isset($jsonData['email']) ? $jsonData['email'] : '';
+            $telegram = isset($jsonData['telegram']) ? $jsonData['telegram'] : '';
+            $instagram = isset($jsonData['instagram']) ? $jsonData['instagram'] : '';
+            $whatsapp = isset($jsonData['whatsapp']) ? $jsonData['whatsapp'] : '';
+            $phone = isset($jsonData['phone']) ? $jsonData['phone'] : '';
+            $per_kg = isset($jsonData['per_kg']) ? $jsonData['per_kg'] : '';
+            $per_volume = isset($jsonData['per_volume']) ? $jsonData['per_volume'] : '';
+            $twogis_link = isset($jsonData['twogis_link']) ? $jsonData['twogis_link'] : '';
+            $iinbin = isset($jsonData['iinbin']) ? $jsonData['iinbin'] : '';
+            $name_company = isset($jsonData['name_company']) ? $jsonData['name_company'] : '';
+        } else {
+            $address = '';
+            $email = '';
+            $telegram = '';
+            $instagram = '';
+            $whatsapp = '';
+            $phone = '';
+            $per_kg = '';
+            $per_volume = '';
+            $twogis_link = '';
+            $iinbin = '';
+            $name_company = '';
+        }
+
         return [
             SettingsElements::class,
             Layout::rows([
                 Group::make([
-                    Input::make('name')
-                        ->title('Name')
-                        ->value('John Doe')
-                        ->placeholder('Enter your name')
-                        ->help('Enter your full name.')
-                        ->horizontal(),
+                    Input::make('name_company')
+                        ->title('Название компании')
+                        ->placeholder('')
+                        ->horizontal()
+                        ->value($name_company),
 
-                    Input::make('search_query')
-                        ->type('search')
-                        ->title('Search Query')
-                        ->value('How do I shoot web')
-                        ->placeholder('Search...')
-                        ->help('Enter your search query.')
-                        ->horizontal(),
+                ]),
+                Group::make([
+                    Input::make('email')
+                        ->title('Почта')
+                        ->placeholder('help@nurapost.com')
+                        ->horizontal()
+                        ->value($email),
+    
+                    Input::make('iinbin')
+                        ->type('text')
+                        ->title('ИНН/БИН')
+                        ->placeholder('')
+                        ->horizontal()
+                        ->value($iinbin),
                 ]),
 
                 Group::make([
-                    Input::make('email')
-                        ->type('email')
-                        ->title('Email')
-                        ->value('bootstrap@example.com')
-                        ->placeholder('example@example.com')
-                        ->help('Enter your email address.')
-                        ->horizontal(),
+                    Input::make('address')
+                        ->title('Адрес главного офиса')
+                        ->placeholder('Введите адрес')
+                        ->horizontal()
+                        ->value($address),
+    
+                    Input::make('twogis_link')
+                        ->type('text')
+                        ->title('Ссылка на 2gis')
+                        ->placeholder('')
+                        ->horizontal()
+                        ->value($twogis_link),
+                ]),
 
-                    Input::make('website')
-                        ->type('url')
-                        ->title('Website')
-                        ->value('https://orchid.software')
-                        ->placeholder('https://example.com')
-                        ->help('Enter your website URL.')
-                        ->horizontal(),
+                Group::make([
+                    Input::make('instagram')
+                        ->type('text')
+                        ->title('Instagram')
+                        ->placeholder('')
+                        ->horizontal()
+                        ->value($instagram),
+
+                    Input::make('telegram')
+                        ->type('text')
+                        ->title('Telegram')
+                        ->placeholder('')
+                        ->horizontal()
+                        ->value($telegram),
                 ]),
 
                 Group::make([
                     Input::make('phone')
                         ->type('tel')
-                        ->title('Phone')
-                        ->value('1-(555)-555-5555')
-                        ->placeholder('Enter phone number')
+                        ->title('Номер телефона')
+                        ->placeholder('+7-777-81-81-818')
                         ->horizontal()
-                        ->popover('The device’s autocomplete mechanisms kick in and suggest
-                        phone numbers that can be autofilled with a single tap.')
-                        ->help('Enter your phone number.'),
+                        ->value($phone),
 
-                    Input::make('password')
-                        ->type('password')
-                        ->title('Password')
-                        ->value('Password')
-                        ->placeholder('Enter password')
-                        ->horizontal(),
+                    Input::make('whatsapp')
+                        ->type('tel')
+                        ->title('Whatsapp номер')
+                        ->placeholder('+7-777-81-81-818')
+                        ->horizontal()
+                        ->value($whatsapp),
                 ]),
 
                 Group::make([
-                    Input::make('quantity')
+                    Input::make('per_kg')
                         ->type('number')
-                        ->title('Quantity')
-                        ->value(42)
-                        ->placeholder('Enter quantity')
-                        ->horizontal(),
+                        ->title('За 1 кг $ ')
+                        ->placeholder('4')
+                        ->horizontal()
+                        ->value($per_kg),
 
-                    Input::make('appointment_datetime')
-                        ->type('datetime-local')
-                        ->title('Appointment Date and Time')
-                        ->value('2011-08-19T13:45:00')
-                        ->placeholder('YYYY-MM-DDTHH:MM')
-                        ->horizontal(),
-                ]),
-
-                Group::make([
-                    Input::make('event_date')
-                        ->type('date')
-                        ->title('Event Date')
-                        ->value('2011-08-19')
-                        ->placeholder('YYYY-MM-DD')
-                        ->horizontal(),
-
-                    Input::make('event_month')
-                        ->type('month')
-                        ->title('Event Month')
-                        ->value('2011-08')
-                        ->placeholder('YYYY-MM')
-                        ->horizontal(),
-                ]),
-
-                Group::make([
-                    Input::make('week_number')
-                        ->type('week')
-                        ->title('Week Number')
-                        ->value('2011-W33')
-                        ->placeholder('YYYY-W##')
-                        ->horizontal(),
-
-                    Input::make('event_time')
-                        ->type('time')
-                        ->title('Event Time')
-                        ->value('13:45:00')
-                        ->placeholder('HH:MM:SS')
-                        ->horizontal(),
-                ]),
-
-                Group::make([
-                    Input::make('city')
-                        ->title('City')
-                        ->help('Select a city from the list.')
-                        ->datalist([
-                            'San Francisco',
-                            'New York',
-                            'Seattle',
-                            'Los Angeles',
-                            'Chicago',
-                        ])
-                        ->horizontal(),
-
-                    Input::make('color_picker')
-                        ->type('color')
-                        ->title('Color Picker')
-                        ->value('#563d7c')
-                        ->horizontal(),
+                    Input::make('per_volume')
+                        ->type('number')
+                        ->title('За 1 м. куб $')
+                        ->placeholder('400')
+                        ->horizontal()
+                        ->value($per_volume),
                 ]),
 
                 Button::make('Submit')
                     ->method('buttonClickProcessing')
-                    ->type(Color::BASIC),
-            ]),
-
-            Layout::columns([
-                Layout::rows([
-
-                    Input::make('name')
-                        ->title('Full Name:')
-                        ->placeholder('Enter full name')
-                        ->required()
-                        ->help('Please enter your full name'),
-
-                    Input::make('email')
-                        ->title('Email address')
-                        ->placeholder('Email address')
-                        ->help("We'll never share your email with anyone else.")
-                        ->popover('Tooltip - hint that user opens himself.'),
-
-                    Password::make('password')
-                        ->title('Password')
-                        ->placeholder('Password'),
-
-                    Label::make('static')
-                        ->title('Static:')
-                        ->value('email@example.com'),
-
-                    Select::make('select')
-                        ->title('Select')
-                        ->options([1, 2]),
-
-                    CheckBox::make('checkbox')
-                        ->title('Checkbox')
-                        ->placeholder('Remember me'),
-
-                    Radio::make('radio')
-                        ->placeholder('Yes')
-                        ->value(1)
-                        ->title('Radio'),
-
-                    Radio::make('radio')
-                        ->placeholder('No')
-                        ->value(0),
-
-                    TextArea::make('textarea')
-                        ->title('Example textarea')
-                        ->rows(6),
-
-                ])->title('Base Controls'),
-                Layout::rows([
-                    Input::make('disabled_input')
-                        ->title('Disabled Input')
-                        ->placeholder('Disabled Input')
-                        ->help('A disabled input element is unusable and un-clickable.')
-                        ->disabled(),
-
-                    Select::make('disabled_select')
-                        ->title('Disabled select')
-                        ->options([1, 2])
-                        ->value(0)
-                        ->disabled(),
-
-                    TextArea::make('disabled_textarea')
-                        ->title('Disabled textarea')
-                        ->placeholder('Disabled textarea')
-                        ->rows(6)
-                        ->disabled(),
-
-                    Input::make('readonly_input')
-                        ->title('Readonly Input')
-                        ->placeholder('Readonly Input')
-                        ->readonly(),
-
-                    CheckBox::make('readonly_checkbox')
-                        ->title('Readonly Checkbox')
-                        ->placeholder('Remember me')
-                        ->disabled(),
-
-                    Radio::make('radio')
-                        ->placeholder('Yes')
-                        ->value(1)
-                        ->title('Radio')
-                        ->disabled(),
-
-                    Radio::make('radio')
-                        ->placeholder('No')
-                        ->value(0)
-                        ->disabled(),
-
-                    TextArea::make('readonly_textarea')
-                        ->title('Readonlyd textarea')
-                        ->placeholder('Readonlyd textarea')
-                        ->rows(7)
-                        ->disabled(),
-
-                ])->title('Input States'),
+                    ->type(Color::BASIC)
+                    ->confirm('Подтвердите вашу изменение в настройках для продолжения')
+                    ->parameters([
+                        'modalTitle' => 'Подтверждение изменение',
+                        'modalSubmit' => 'Подтвердить',
+                    ]),
             ]),
         ];
+    }
+
+    public function buttonClickProcessing(Request $request)
+    {
+        $filePath = config_path('config_file.json');
+
+        if (File::exists($filePath)) {
+            $jsonData = json_decode(File::get($filePath), true);
+        } else {
+            $jsonData = [];
+        }
+
+        $jsonData['address'] = $request->input('address');
+        $jsonData['email'] = $request->input('email');
+        $jsonData['instagram'] = $request->input('instagram');
+        $jsonData['telegram'] = $request->input('telegram');
+        $jsonData['phone'] = $request->input('phone');
+        $jsonData['whatsapp'] = $request->input('whatsapp');
+        $jsonData['per_kg'] = $request->input('per_kg');
+        $jsonData['per_volume'] = $request->input('per_volume');
+        $jsonData['twogis_link'] = $request->input('twogis_link');
+        $jsonData['iinbin'] = $request->input('iinbin');
+        $jsonData['name_company'] = $request->input('name_company');
+
+        File::put($filePath, json_encode($jsonData));
+
+        Alert::success('Данные успешно сохранены');
+
+        return redirect()->back();
     }
 }
