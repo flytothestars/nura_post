@@ -38,7 +38,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Dashboard')
                 ->icon('bs.graph-up')
                 ->title('Главная')
-                ->route(config('platform.index')),
+                ->route('platform.example'),
             
             Menu::make('Филиалы')
                 ->icon('bs.geo-alt')
@@ -57,20 +57,6 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.gear')
                 ->route('platform.settings.basic')
                 ->active('*/settings/form/*'),
-
-            Menu::make('Sample Screen')
-                ->icon('bs.collection')
-                ->route('platform.example')
-                ->badge(fn () => 6),
-
-            Menu::make('Form Elements')
-                ->icon('bs.card-list')
-                ->route('platform.example.fields')
-                ->active('*/examples/form/*'),
-
-            Menu::make('Overview Layouts')
-                ->icon('bs.window-sidebar')
-                ->route('platform.example.layouts'),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')

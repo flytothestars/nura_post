@@ -63,8 +63,7 @@
             rangeSlider.addEventListener('input', function () {
                 console.log(rangeSlider.value)
                 rangeDisplay.textContent = rangeSlider.value;
-                rangeResult.textContent = rangeSlider.value * {{ $settingData['per_kg'] }
-            };
+                rangeResult.textContent = rangeSlider.value * {{$settingData['per_kg']}};
         });
        } else {
         console.error('Element with id "range-result" not found.');
