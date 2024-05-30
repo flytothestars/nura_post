@@ -124,7 +124,7 @@
             </div>
 
 
-            <button class="button branches-btn">Посмотреть все филиалы</button>
+            <!-- <button class="button branches-btn">Посмотреть все филиалы</button> -->
         </div>
     </div>
 </div>
