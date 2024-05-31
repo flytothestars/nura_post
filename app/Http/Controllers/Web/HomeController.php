@@ -18,6 +18,13 @@ class HomeController extends Controller
         return view('web.home', ['filials' => $filials, 'settingData' => $settingData]);
     }
 
+    public function news()
+    {
+        $settingData = $this->getSettingData();
+        return view('web.news', ['settingData' => $settingData]);
+    }
+
+    
     public function checkTrackCode(Request $request)
     {
         $track = TrackCode::where('code', $request->code)->first();

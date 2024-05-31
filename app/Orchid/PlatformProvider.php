@@ -39,7 +39,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.graph-up')
                 ->title('Главная')
                 ->route('platform.example'),
-            
+
             Menu::make('Филиалы')
                 ->icon('bs.geo-alt')
                 ->route('platform.filials'),
@@ -48,11 +48,28 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.book')
                 ->route('platform.partners'),
 
+            Menu::make('Новости')
+                ->icon('bs.book')
+                ->route('platform.news'),
+
             Menu::make('Загрузить трек-код')
                 ->icon('bs.box-seam')
                 ->route('platform.trackcode'),
 
-            
+            Menu::make('Sample Screen')
+                ->icon('bs.collection')
+                ->route('platform.example')
+                ->badge(fn () => 6),
+
+            Menu::make('Form Elements')
+                ->icon('bs.card-list')
+                ->route('platform.example.fields')
+                ->active('*/examples/form/*'),
+
+            Menu::make('Overview Layouts')
+                ->icon('bs.window-sidebar')
+                ->route('platform.example.layouts'),
+                
             Menu::make('Настройка')
                 ->icon('bs.gear')
                 ->route('platform.settings.basic')

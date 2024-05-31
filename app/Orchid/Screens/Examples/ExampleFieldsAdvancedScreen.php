@@ -284,6 +284,7 @@ class ExampleFieldsAdvancedScreen extends Screen
 
                 Upload::make('files')
                     ->title('Upload files')
+                    ->maxFiles(1)
                     ->horizontal(),
 
                 Upload::make('files_with_catalog')

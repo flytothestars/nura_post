@@ -93,9 +93,6 @@ class TrackCodeListScreen extends Screen
 
     public function create(Request $request)
     {
-        // $request->validate([
-        //     'raw_file' => 'required|mimes:xlsx,xls', // Валидация файла
-        // ]);
         $status = $request['first_status_track_code_id'] ? $request['first_status_track_code_id'] : $request['second_status_track_code_id'];
         $file = $request->file('raw_file');
         try {
