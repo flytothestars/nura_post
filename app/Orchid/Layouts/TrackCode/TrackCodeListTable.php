@@ -42,29 +42,29 @@ class TrackCodeListTable extends Table
                 $status = StatusTrackCode::find($track_code->status_track_code_id);
                 return "<span class='badge text-center' style='background-color: {$status->background_color}; font-size: 12px; color: {$status->text_color}'>{$status->name}</span>";
             }),
-            TD::make('action', 'Действие')->render(function (TrackCode $track_code) {
-                return Group::make([
-                    ModalToggle::make('')
-                        ->icon('bs.pencil')
-                        ->modal('editFilial')
-                        ->method('update')
-                        ->modalTitle('Редактирование филиал ' . $track_code->code)
-                        ->asyncParameters([
-                            'track_code' => $track_code->id
-                        ])
-                        ->class('btn btn-warning text-center rounded-2')
-                        ->style($this->styleButton),
-                    Button::make('')
-                        ->icon('trash')
-                        ->method('delete')
-                        ->confirm('Вы уверены, что хотите удалить филиал?')
-                        ->parameters([
-                            'track_code' => $track_code->id,
-                        ])
-                        ->class('btn btn-danger text-center rounded-2')
-                        ->style($this->styleButton),
-                ]);
-            })->width('200px'),
+            // TD::make('action', 'Действие')->render(function (TrackCode $track_code) {
+            //     return Group::make([
+            //         ModalToggle::make('')
+            //             ->icon('bs.pencil')
+            //             ->modal('editFilial')
+            //             ->method('update')
+            //             ->modalTitle('Редактирование филиал ' . $track_code->code)
+            //             ->asyncParameters([
+            //                 'track_code' => $track_code->id
+            //             ])
+            //             ->class('btn btn-warning text-center rounded-2')
+            //             ->style($this->styleButton),
+            //         Button::make('')
+            //             ->icon('trash')
+            //             ->method('delete')
+            //             ->confirm('Вы уверены, что хотите удалить филиал?')
+            //             ->parameters([
+            //                 'track_code' => $track_code->id,
+            //             ])
+            //             ->class('btn btn-danger text-center rounded-2')
+            //             ->style($this->styleButton),
+            //     ]);
+            // })->width('200px'),
         ];
     }
 }

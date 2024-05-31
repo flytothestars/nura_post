@@ -37,6 +37,9 @@ Route::screen('/filials', \App\Orchid\Screens\Filial\FilialListScreen::class)
 Route::screen('/partners', \App\Orchid\Screens\Partner\PartnerListScreen::class)
 ->name('platform.partners');
 
+Route::screen('/news', \App\Orchid\Screens\News\NewsListScreen::class)
+->name('platform.news');
+
 Route::screen('/trackcode', \App\Orchid\Screens\TrackCode\TrackCodeListScreen::class)
 ->name('platform.trackcode');
 

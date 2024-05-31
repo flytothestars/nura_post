@@ -27,7 +27,8 @@
                     <label class="label" for="product-weight">Вес продукта</label>
                     <div class="range-container">
                         <span class="range-value" id="range-display">0</span>
-                        <input type="range" min="0" step="0.1" max="100" value="0" class="product-inputRange" id="range-slider">
+                        <input type="range" min="0" step="0.1" max="100" value="0" class="product-inputRange"
+                            id="range-slider">
                     </div>
                 </div>
                 <div class="rates-type">
@@ -129,6 +130,94 @@
     </div>
 </div>
 @endif
+
+
+<!-- <div class="my-2">
+    <div class="block-header align-items-center d-flex">
+        <div class="header flex-grow-0 ">Полезные информации</div>
+        <div class="block-header__line px-4 flex-grow-1">
+            <hr>
+        </div>
+        <div class="block-header__show-all flex-grow-0 "><a href="{{route('news')}}">Показать все</a></div>
+    </div>
+</div>
+<div class=" mb-5 pb-4">
+    <div class="d-lg-block d-none">
+
+        <div class="news-block">
+            <div class="row">
+                <div class="col-6 static align-items-stretch d-flex">
+                    <a href="#" class="card news-block__card">
+                        <img src="#"
+                            class="card-img-top " alt="">
+                        <div class="card-body d-flex pb-2 flex-column">
+                            <h5 class="card-title">Header</h5>
+                            <p class="card-text">Lead</p>
+                            <div class="card-text mt-auto pb-1 date">
+                                Create date    
+                            </div>
+                            <div class="card-text mt-auto pb-1 date"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <div class="row ">
+                        <div class="col-6 d-flex flex-column">
+                            <a href="#"
+                                class="card news-block__card h-100 mb-3">
+                                <img src="#"
+                                    class="card-img-top" alt="">
+                                <div class="card-body pb-2 d-flex flex-column">
+                                    <h5 class="card-title mb-0">Header</h5>
+                                    <div class="card-text pb-1 pt-1 mt-auto date">
+                                        Created date
+                                    </div>
+                                    <div class="card-text pb-1 pt-1 mt-auto date"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 d-flex flex-column">
+                            <a href="#"
+                                class="card news-block__card mb-3">
+                                <img src="#"
+                                    class="card-img-top" alt="">
+                                <div class="card-body pb-2 d-flex flex-column">
+                                    <h5 class="card-title mb-0">Header</h5>
+                                    <div class="card-text mt-auto pb-1 pt-1 date">
+                                    Created date    
+                                    </div>
+                                    <div class="card-text mt-auto pb-1 pt-1 date"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="#"
+                                class="card news-block__card news-block__card-last">
+                                <div class="card-body pb-2 d-flex flex-column">
+                                    <h5 class="card-title mb-0">Header</h5>
+                                    <div class="card-text pb-1 mt-2 date">
+                                        Created date    
+                                    </div>
+                                    <div class="card-text pb-1 mt-2 date"></div>
+                                </div>
+                                <div class="card-img-wrapper">
+                                    <img src="#"
+                                        class="card-img-top" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-lg-none d-block">
+        <div class="newsBlock-carousel owl-carousel owl-theme carousel">
+        </div>
+    </div>
+</div> -->
 
 
 <!-- <div class="mt80">
