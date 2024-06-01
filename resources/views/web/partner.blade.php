@@ -14,7 +14,7 @@
 </div>
 <div style="margin: 20px 0px; padding: 10px; border: 2px solid blue; border-radius: 16px; align-items: center;">
     <h3 style="font-weight: 700; margin: 0px;">Партнерство - это возможность использовать
-        возможности компании JAŃA POST для беспрепятственного роста.</h3>
+        возможности компании {{$settingData['name_company']}} для беспрепятственного роста.</h3>
 </div>
 <div class="need">
     <div>
