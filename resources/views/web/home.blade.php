@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Главная страница')
 @section('content')
-<div class="home-welcome">
+<div class="home-welcome" style="
+background: linear-gradient(180deg, rgba(0, 0, 0, .24), rgba(0, 0, 0, .64)), url('{{ asset('images/welcome.png') }}');">
     <div class="welcome-block">
         <p class="text-welcome">Купите онлайн товар из границы и получите доставку!</p>
         <div class="observation-input">
