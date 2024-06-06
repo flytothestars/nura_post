@@ -94,15 +94,6 @@ class SettingsFieldsAdvancedScreen extends Screen
                         ->vertical(),
                 ]),
             ]),
-            Layout::columns([
-                Layout::rows([
-                    
-                    TD::make('id', 'ID'),
-                    TD::make('code', 'Трек-Код'),
-                ])->title('Список статусов'),
-                Layout::rows([
-                ])->title('Список городов'),
-            ]),
         ];
     }
 }

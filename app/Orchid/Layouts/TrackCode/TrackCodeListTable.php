@@ -36,12 +36,12 @@ class TrackCodeListTable extends Table
     protected function columns(): iterable
     {
         return [
-            TD::make('id', 'ID'),
-            TD::make('code', 'Трек-Код'),
+            TD::make('id', 'ID')->sort(),
+            TD::make('code', 'Трек-Код')->filter(TD::FILTER_TEXT),
             TD::make('status_track_code_id', 'Статус')->render(function (TrackCode $track_code) {
                 $status = StatusTrackCode::find($track_code->status_track_code_id);
                 return "<span class='badge text-center' style='background-color: {$status->background_color}; font-size: 12px; color: {$status->text_color}'>{$status->name}</span>";
-            }),
+            })->sort(),
             // TD::make('action', 'Действие')->render(function (TrackCode $track_code) {
             //     return Group::make([
             //         ModalToggle::make('')

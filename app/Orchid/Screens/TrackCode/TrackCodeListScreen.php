@@ -15,6 +15,7 @@ use Orchid\Support\Facades\Layout;
 use Maatwebsite\Excel\Facades\Excel;
 use Orchid\Screen\Actions\ModalToggle;
 use App\Orchid\Layouts\TrackCode\TrackCodeListTable;
+use Orchid\Screen\Fields\Group;
 
 
 class TrackCodeListScreen extends Screen
@@ -27,7 +28,15 @@ class TrackCodeListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'track_codes' => TrackCode::all()
+            'track_codes' => TrackCode::filters()->defaultSort('id', 'desc')->paginate(20),
+            'metrics' => [
+                'sales'    => TrackCode::count(),
+                'status_1'    => TrackCode::where('status_track_code_id', 1)->count(),
+                'status_2'    => TrackCode::where('status_track_code_id', 2)->count(),
+                'status_3'    => TrackCode::where('status_track_code_id', 3)->count(),
+                'status_4'    => TrackCode::where('status_track_code_id', 4)->count(),
+                'status_5'    => TrackCode::where('status_track_code_id', 5)->count(),
+            ],
         ];
     }
 
@@ -61,6 +70,19 @@ class TrackCodeListScreen extends Screen
     public function layout(): iterable
     {
         return [
+            Layout::accordion([
+                'Количество' => Layout::metrics([
+                    'Количество трек-кодов'    => 'metrics.sales',
+                ]),
+                'Анализ по статус' => Layout::metrics([
+                    'Дата регистрация клиентом' => 'metrics.status_1',
+                    'Поступило на склад Китае' => 'metrics.status_2',
+                    'Пути' => 'metrics.status_3',
+                    'Поступило на склад филиал' => 'metrics.status_4',
+                    'Получено' => 'metrics.status_5',
+                ]),
+            ]),
+
             TrackCodeListTable::class,
             Layout::modal('createTrackCode', [
                 Layout::tabs([
