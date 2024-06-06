@@ -56,19 +56,19 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.box-seam')
                 ->route('platform.trackcode'),
 
-            Menu::make('Sample Screen')
-                ->icon('bs.collection')
-                ->route('platform.example')
-                ->badge(fn () => 6),
+            // Menu::make('Sample Screen')
+            //     ->icon('bs.collection')
+            //     ->route('platform.example')
+            //     ->badge(fn () => 6),
 
-            Menu::make('Form Elements')
-                ->icon('bs.card-list')
-                ->route('platform.example.fields')
-                ->active('*/examples/form/*'),
+            // Menu::make('Form Elements')
+            //     ->icon('bs.card-list')
+            //     ->route('platform.example.fields')
+            //     ->active('*/examples/form/*'),
 
-            Menu::make('Overview Layouts')
-                ->icon('bs.window-sidebar')
-                ->route('platform.example.layouts'),
+            // Menu::make('Overview Layouts')
+            //     ->icon('bs.window-sidebar')
+            //     ->route('platform.example.layouts'),
                 
             Menu::make('Настройка')
                 ->icon('bs.gear')
