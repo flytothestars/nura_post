@@ -15,32 +15,14 @@ class HomeController extends Controller
     {
         $filials = Filial::all();
         $settingData = $this->getSettingData();
-
-        $directory = public_path('images');
         //banner get extension
-        $basename_banner = 'welcome';
-        $fileExtension_banner = '';
-        $files_banner = File::files($directory);
-        foreach ($files_banner as $file) {
-            if (pathinfo($file, PATHINFO_FILENAME) === $basename_banner) {
-                $fileExtension_banner = pathinfo($file, PATHINFO_EXTENSION);
-                break;
-            }
-        }
+        $fileExtension_banner = $this->getBanner();
         //icon get extension
-        $basename_icon = 'nurapost_logo';
-        $fileExtension_icon = '';
-        $files_icon = File::files($directory);
-        foreach ($files_icon as $file) {
-            if (pathinfo($file, PATHINFO_FILENAME) === $basename_icon) {
-                $fileExtension_icon = pathinfo($file, PATHINFO_EXTENSION);
-                break;
-            }
-        }
+        $fileExtension_icon = $this->getIcon();
 
         return view('web.home', [
-            'filials' => $filials, 
-            'settingData' => $settingData, 
+            'filials' => $filials,
+            'settingData' => $settingData,
             'fileExtension_banner' => $fileExtension_banner,
             'fileExtension_icon' => $fileExtension_icon
         ]);
@@ -64,7 +46,15 @@ class HomeController extends Controller
     public function partner()
     {
         $settingData = $this->getSettingData();
-        return view('web.partner', ['settingData' => $settingData]);
+        //banner get extension
+        $fileExtension_banner = $this->getBanner();
+        //icon get extension
+        $fileExtension_icon = $this->getIcon();
+        return view('web.partner', [
+            'settingData' => $settingData,
+            'fileExtension_banner' => $fileExtension_banner,
+            'fileExtension_icon' => $fileExtension_icon
+        ]);
     }
 
     public function setPartner(Request $request)
@@ -106,5 +96,37 @@ class HomeController extends Controller
             $settingData['name_company'] = '';
         }
         return $settingData;
+    }
+
+    public function getIcon()
+    {
+        $directory = public_path('images');
+        $basename_icon = 'nurapost_logo';
+        $fileExtension_icon = '';
+        $files_icon = File::files($directory);
+        foreach ($files_icon as $file) {
+            if (pathinfo($file, PATHINFO_FILENAME) === $basename_icon) {
+                $fileExtension_icon = pathinfo($file, PATHINFO_EXTENSION);
+                break;
+            }
+        }
+
+        return $fileExtension_icon;
+    }
+
+    public function getBanner()
+    {
+        $directory = public_path('images');
+        $basename_banner = 'welcome';
+        $fileExtension_banner = '';
+        $files_banner = File::files($directory);
+        foreach ($files_banner as $file) {
+            if (pathinfo($file, PATHINFO_FILENAME) === $basename_banner) {
+                $fileExtension_banner = pathinfo($file, PATHINFO_EXTENSION);
+                break;
+            }
+        }
+
+        return $fileExtension_banner;
     }
 }
