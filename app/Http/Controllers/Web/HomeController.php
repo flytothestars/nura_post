@@ -15,7 +15,35 @@ class HomeController extends Controller
     {
         $filials = Filial::all();
         $settingData = $this->getSettingData();
-        return view('web.home', ['filials' => $filials, 'settingData' => $settingData]);
+
+        $directory = public_path('images');
+        //banner get extension
+        $basename_banner = 'welcome';
+        $fileExtension_banner = '';
+        $files_banner = File::files($directory);
+        foreach ($files_banner as $file) {
+            if (pathinfo($file, PATHINFO_FILENAME) === $basename_banner) {
+                $fileExtension_banner = pathinfo($file, PATHINFO_EXTENSION);
+                break;
+            }
+        }
+        //icon get extension
+        $basename_icon = 'nurapost_logo';
+        $fileExtension_icon = '';
+        $files_icon = File::files($directory);
+        foreach ($files_icon as $file) {
+            if (pathinfo($file, PATHINFO_FILENAME) === $basename_icon) {
+                $fileExtension_icon = pathinfo($file, PATHINFO_EXTENSION);
+                break;
+            }
+        }
+
+        return view('web.home', [
+            'filials' => $filials, 
+            'settingData' => $settingData, 
+            'fileExtension_banner' => $fileExtension_banner,
+            'fileExtension_icon' => $fileExtension_icon
+        ]);
     }
 
     public function news()
@@ -24,7 +52,7 @@ class HomeController extends Controller
         return view('web.news', ['settingData' => $settingData]);
     }
 
-    
+
     public function checkTrackCode(Request $request)
     {
         $track = TrackCode::where('code', $request->code)->first();
